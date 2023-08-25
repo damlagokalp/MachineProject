@@ -7,9 +7,17 @@ using System.Reflection.PortableExecutable;
 using DataAccess.Concrete.InMemory;
 using Business.Concrete;
 
-MachineTest();
 
 
+//DATA CREATION
+//CreateMachineOfPRoducerAndBrands();
+//CreateDataOfMachines();
+
+//------------------------------------------------
+
+//MachineTest();
+//UpdateMachineTest();
+//MachineDeleteTest();
 MachineManager machineManager = new MachineManager(new EfMachineDal());
 foreach (var machine in machineManager.GetMachineDetails().Data)
 {
@@ -17,14 +25,19 @@ foreach (var machine in machineManager.GetMachineDetails().Data)
 }
 
 static void MachineTest()
-
-   
 {
    MachineManager machineManager=new MachineManager(new EfMachineDal());
     foreach(var machine in machineManager.GetAll().Data)
     {
-        Console.WriteLine("{0} : {1}",machine.MachineId ,machine.Description);
+        Console.WriteLine("{0} : {1}",machine.MachineId ,machine.MachineName);
     }
 
     
 }
+
+//static void MachineDeleteTest()
+//{
+//    MachineManager delete = new MachineManager(EfMachineDal());
+//    delete.DeleteMachine(new
+//        +93,0);
+//}
