@@ -11,8 +11,10 @@ namespace Entities.DTOs
     {
         //join
         public int MachineId { get; set; }
+        public string MachineName { get; set; }
         public string ProducerName { get; set; }//üretici adı
         public int BrandId { get; set; }
+        public int Description { get; set; }
 
     }
 }

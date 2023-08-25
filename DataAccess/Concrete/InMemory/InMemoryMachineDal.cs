@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,11 @@ namespace DataAccess.Concrete.InMemory
             _machines = new List<Machine>() 
             { 
             //ürünler kaydedildi
-            new Machine { MachineId = 1, BrandId = 10, Description = "A6 Housing", ProducerName = "A üreticisi" },
-            new Machine { MachineId = 2, BrandId = 20, Description = "A6 Cylinder", ProducerName = "B üreticisi" },
-            new Machine { MachineId = 3, BrandId = 30, Description = "A6 Drive Shaft", ProducerName = "C üreticisi" },
-            new Machine { MachineId = 4, BrandId = 40, Description = "A6 Control Lens", ProducerName = "D üreticisi" },
-            new Machine { MachineId = 5, BrandId = 50, Description = "A6 IBV", ProducerName = "E üreticisi" },
+            new Machine { MachineId = 1,MachineName= "A6", BrandId = 10, Description = "A6 Housing", ProducerName = "A üreticisi" },
+            new Machine { MachineId = 2,MachineName= "A4", BrandId = 20, Description = "A4 Cylinder", ProducerName = "B üreticisi" },
+            new Machine { MachineId = 3,MachineName= "A10", BrandId = 30, Description = "A10 Drive Shaft", ProducerName = "C üreticisi" },
+            new Machine { MachineId = 4, MachineName = "A2", BrandId = 40, Description = "A2 Control Lens", ProducerName = "D üreticisi" },
+            new Machine { MachineId = 5,MachineName= "MC", BrandId = 50, Description = "MC IBV", ProducerName = "E üreticisi" },
 
             };
         }
@@ -55,6 +56,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Machine> GetById(int id)
         {
             return _machines.Where(p=>p.MachineId == id).ToList();//Where şart
+        }
+
+        public List<MachineDetailDto> GetMachineDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Machine machine)

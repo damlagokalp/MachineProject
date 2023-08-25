@@ -14,11 +14,12 @@ namespace Core.DataAccess
         // Generic constraint filtreleme sınırlandırma
 
        
-        List<T> GetAll(Expression<Func<T, bool>> filter = null);
+        
         T Get(Expression<Func<T, bool>> filter);
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        void Add(T entity);                                       // C - created
+        List<T> GetAll(Expression<Func<T, bool>> filter = null); // R - read
+        void Delete(T entity);                                   // U - update
+        void Update(T entity);                                   // D - delete
 
     }
 }

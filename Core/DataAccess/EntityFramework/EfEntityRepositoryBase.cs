@@ -22,6 +22,7 @@ namespace Core.DataAccess.EntityFramework
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
+                Console.WriteLine("Veritabanı eklendi");
             }
         }
 
@@ -32,6 +33,7 @@ namespace Core.DataAccess.EntityFramework
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
+                Console.WriteLine("Veritabanı silindi");
             }
         }
 
@@ -40,7 +42,7 @@ namespace Core.DataAccess.EntityFramework
             using (TContext context = new TContext())
             {
                 return context.Set<TEntity>().SingleOrDefault(filter);
-                //MAchine tablosuna SingleOrDefault uygulanır
+                //Machine tablosuna SingleOrDefault uygulanır
             }
         }
 
@@ -64,6 +66,7 @@ namespace Core.DataAccess.EntityFramework
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
+                Console.WriteLine("Veritabanı güncellendi");
             }
         }
     }

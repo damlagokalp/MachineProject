@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //neden protected?
         {
             //sql server kullanılır
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Northwind;Trusted_Connection=true", options => options.EnableRetryOnFailure());
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MachineProject;Trusted_Connection=true", options => options.EnableRetryOnFailure());
         }
         //Benim nesnemle veritabanındaki nesnenin bağlanması
         public DbSet<Machine > Machines { get; set; }

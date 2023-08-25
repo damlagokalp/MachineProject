@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProducerDal : EfEntityRepositoryBase<Producer, MachineContext>, IProducerDal
+    internal class EfUserDal : EfEntityRepositoryBase<User,MachineContext>,IUserDal
     {
-
     }
 }
