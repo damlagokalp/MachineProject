@@ -1,5 +1,8 @@
 ﻿                                                                                                                                                                                                                                                                                                                                                                                                                                            using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -14,18 +17,22 @@ namespace Business.Concrete
 {
     public class MachineManager : IMachineService
     {
+        //MachineManager ın bağımlılığını çözme
         IMachineDal _machineDal;// IMachineDal dan referans alınır
         public MachineManager(IMachineDal machineDal)
         {
             _machineDal = machineDal;
         }
+        [ValidationAspect(typeof(MachineValidator))]//Bu methodu doğrula productValidatörü kullanarak
         public IResult AddMachine(Machine machine)
         {
-            if (machine.Description.Length < 2)
-            {
-                return new ErrorResult(Messages.MachineNameInvalid);// 2 karakterden küçükse başarısız ve errorResult kullanılır
+            //if (machine.Description.Length < 2)
+            //{
+            //    return new ErrorResult(Messages.MachineNameInvalid);// 2 karakterden küçükse başarısız ve errorResult kullanılır
 
-            }
+            //}
+
+            ValidationTool.Validate(new MachineValidator(),machine);
             _machineDal.Add(machine);
             return new SuccessResult(Messages.MachineAdded);//eğer başarılı ise ürün eklenir 
         }
@@ -37,7 +44,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Machine>> GetAll()
         {
-            if (DateTime.Now.Hour == 11)
+            if (DateTime.Now.Hour == 12)
             {
                 return new ErrorDataResult<List<Machine>>(Messages.MaintenanceTime);//Maintenance: bakım zamanı
             }
