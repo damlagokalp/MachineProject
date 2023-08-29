@@ -11,6 +11,7 @@ namespace Core.CrossCuttingConcerns.Validation
 {
     public class ValidationTool
     {
+        //object doğrulanacak varlık
         //bu tip araçlar static oluşturlur 
         public static void Validate(IValidator validator, object entity)
         {

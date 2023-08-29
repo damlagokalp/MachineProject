@@ -1,4 +1,4 @@
-﻿                                                                                                                                                                                                                                                                                                                                                                                                                                            using Business.Abstract;
+﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -19,22 +19,22 @@ namespace Business.Concrete
     {
         //MachineManager ın bağımlılığını çözme
         IMachineDal _machineDal;// IMachineDal dan referans alınır
+        
         public MachineManager(IMachineDal machineDal)
         {
             _machineDal = machineDal;
+            
         }
-        [ValidationAspect(typeof(MachineValidator))]//Bu methodu doğrula productValidatörü kullanarak
+         
+        //[ValidationAspect(typeof(MachineValidator))]//Bu methodu doğrula productValidatörü kullanarak
         public IResult AddMachine(Machine machine)
-        {
-            //if (machine.Description.Length < 2)
-            //{
-            //    return new ErrorResult(Messages.MachineNameInvalid);// 2 karakterden küçükse başarısız ve errorResult kullanılır
+        {//business codes 
 
-            //}
-
-            ValidationTool.Validate(new MachineValidator(),machine);
             _machineDal.Add(machine);
             return new SuccessResult(Messages.MachineAdded);//eğer başarılı ise ürün eklenir 
+
+           ValidationTool.Validate(new MachineValidator(),machine);
+
         }
 
         public IResult DeleteMachine(Machine machine)
