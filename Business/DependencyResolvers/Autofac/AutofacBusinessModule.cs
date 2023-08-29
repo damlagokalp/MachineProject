@@ -24,8 +24,6 @@ namespace Business.DependencyResolvers.Autofac
 
             //builder.RegisterType<FileLogger>().As<ILogger>().SingleInstance();
 
-            //builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
-            //builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
