@@ -11,13 +11,13 @@ using Machine = Entities.Concrete.Machine;
 
 
 //DATA CREATION
-//CreateMachineOfProducerAndBrands();
+CreateMachineOfProducerAndBrands();
 //CreateDataOfMachines();
 
 //------------------------------------------------
 
 //MachineTest();
-UpdateMachineTest();
+//UpdateMachineTest();
 //MachineDeleteTest();
 MachineManager machineManager = new MachineManager(new EfMachineDal());
 foreach (var machine in machineManager.GetMachineDetails().Data)
